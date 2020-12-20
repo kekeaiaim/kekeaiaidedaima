@@ -1,0 +1,34 @@
+#include <stdio.h>//定义三个数组每次叠加，三角形，用到直接减
+#include <math.h>
+int main(void)
+{
+    long long int r,a[100009],i,j,m,b,n,x;long long int sum=0;long long int k[100009];
+	a[0]={0};k[0]={0};
+	x = (int)(pow(10,9)+7);
+	scanf("%d",&r);
+	for(i=1;i<=r;i++)
+	{
+		scanf("%d",&a[i]);
+		a[i]=a[i-1]+a[i];
+	}
+	for(i=1;i<=r;i++)
+	{
+		k[i]=k[i-1]+a[i];
+	}
+/*	for(i=0;i<=r;i++)
+	{
+		printf("%d    ",k[i]);	
+	}
+	for(i=0;i<r;i++)
+	{
+			printf("%d       ",a[i]);
+	}*/
+	scanf("%d",&b);
+	for(j=0;j<b;j++)
+	{
+		scanf("%d%d",&m,&n);
+		sum=sum+k[n]-(n-m+1)*a[m-1]-k[m-1];
+	    sum=sum%x;
+	}
+  printf("%lld",sum);	 
+}
