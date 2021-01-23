@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+int cmp(const void *a,const void *b)
+{
+    return *(int *)a-*(int *)b;
+    //这是从小到大排序，若是从大到小改成： return *(int *)b-*(int *)a;
+}
+int main()
+{
+long  int m,n,a[1000005],t[1000005],i,flag=1,mid;
+ scanf("%d %d",&m,&n);
+ for(i=0;i<m;i++){
+ scanf("%d",&a[i]);
+ }
+ for(i=0;i<n;i++){
+ scanf("%d",&t[i]);
+ }
+ i=0;
+ qsort(a,m,sizeof(a[0]),cmp);
+ while(n--){
+  int flag=1,low=0,high=m-1;
+  while(low<=high&&flag){
+   mid=(low+high)/2;
+   if(t[i]==a[mid]){
+	   flag=0;
+   }
+   if(t[i]<a[mid])
+	   high=mid-1;
+   if(t[i]>a[mid])
+	   low=mid+1;
+  }
+  if(flag)
+	  printf("NO\n");
+  else
+	  printf("YES\n");
+  i++;
+ }
+ return 0;
+}
