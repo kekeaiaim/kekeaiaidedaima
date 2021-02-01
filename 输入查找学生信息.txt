@@ -1,0 +1,47 @@
+#include <string.h>
+#include <stdio.h>
+struct student
+{
+	char name[100];
+	int score;
+	char f[100];
+}student[100];
+int main(void)
+{
+	char s[100];int i=0;char d[100];int h=0;int m=0;int count =0;int g=0;
+	scanf("%s",s);
+	while(strcmp(s,"end")!=0)
+	{
+		if(strcmp(s,"insert")==0)
+	 {
+		scanf("%s",student[i].name);
+		scanf("%d",&student[i].score);
+		i++;g++;
+	 }
+	  if(strcmp(s,"find")==0)
+	  {
+	  	scanf("%s",d);
+	  	strcpy(student[h].f,d);
+	  	h++;count++;
+	  }
+	  scanf("%s",s);
+	}
+	for(int h=0;h<count;h++)
+	{
+	   	for(int i=0;i<g;i++)
+	   	{
+	   		if(strcmp(student[h].f,student[i].name)==0)
+		    {
+		   	printf("%d\n",student[i].score);
+		   	m=1;
+		   	break;
+			} 
+		}
+		   if(m==0)
+			{
+				printf("-1\n");
+			}
+			m=0;
+	}
+	return 0;
+} 
