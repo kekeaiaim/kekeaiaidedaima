@@ -1,0 +1,36 @@
+# include<stdio.h>
+ struct node{
+	int c,b;
+}a[100],flag;
+int main(void)
+{ 
+    int n;int temp;int count;
+	while(scanf("%d",&n)&&n)
+	{  
+		for(int i=0;i<n;i++)
+			scanf("%d%d",&a[i].c,&a[i].b);
+	for(int i=0;i<n;i++)//结构体排序一个 
+	{
+		for(int j=0;j<n-i-1;j++)
+		{
+			if(a[j].b>a[j+1].b)
+			{
+				flag=a[j];
+				a[j]=a[j+1];
+				a[j+1]=flag;
+			}
+		}
+	}
+	temp=a[0].b;count=1;
+	for(int i=1;i<n;i++)
+	{
+		if(a[i].c>=temp)        
+		{
+			count++;
+			temp=a[i].b;
+		}
+	}
+	printf("%d\n",count);
+   }
+   return 0;
+ } 

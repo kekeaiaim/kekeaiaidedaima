@@ -1,0 +1,22 @@
+#include <stdio.h>
+int abs(int a)
+{
+    return a<0?-a:a;
+}
+int main()
+{
+    int n,p,i,h,sum;
+    scanf("%d",&p);
+    while(p--)
+    {
+        scanf("%d%d",&n,&sum);
+        for(i=1;i<n;++i)
+        {
+            scanf("%d",&h);
+            sum=abs(sum-h);
+        }
+        if(sum)    printf("I will never go out T_T\n");
+        else    printf("yeah~ I escaped ^_^\n");
+    }
+    return 0;
+}

@@ -1,0 +1,36 @@
+#include <stdio.h>
+#define N 1000
+int cal(int a[],int x,int n)
+{
+	int i,j,cp,k;int s;//s为岗哨，j跑到他就不乘了 
+	a[N-1]=1;s=N-2;
+	for(i=0;i<n;i++)
+	{
+		cp=0;//每一次尾部最后一个数进位值都为0
+		for(j=N-1;j>s;j--)
+		{
+			k=a[j]*x+cp;
+			a[j]=k%10;//剥离个=位，存到数组
+			cp=k/10; 
+		} 
+		//a[s--]=cp; 
+		while(cp)//不写这里会导致cp进位太大,int数组存不下，出现负值 
+		{
+			a[s--]=cp%10;
+			cp/=10;
+		}
+	}
+	return s;
+}
+int main(void) 
+{
+	int x,n,a[N],s,i;
+	printf("请输入对应的底数和指数:");
+	scanf("%d%d",&x,&n);
+	s=cal(a,x,n);
+	for(i=s+1;i<N;i++)
+	{
+		printf("%d",a[i]);
+	} 
+	return 0;
+}
